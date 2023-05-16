@@ -49,9 +49,7 @@ const removeContact = async (req, res, next) => {
 
 const addContact = async (req, res, next) => {
 	try {
-        const { error } = contactAddSchema.validate(req.body);
-        console.log(error);
-		if (error) throw HttpError(400, error.message);
+        
 
 		const newContact = await contactsService.addContact(req.body);
 
