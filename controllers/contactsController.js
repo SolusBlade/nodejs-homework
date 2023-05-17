@@ -1,10 +1,6 @@
 const contactsService = require("../models/contacts");
 
 const HttpError = require("../helpers/HttpError");
-const {
-	contactAddSchema,
-	contactUpdateSchema,
-} = require("../helpers/ContactValidate");
 
 const getContacts = async (_, res, next) => {
 	try {
@@ -63,8 +59,6 @@ const updateContact = async (req, res, next) => {
 	try {
 		if (Object.keys(req.body).length === 0)
 			throw HttpError(400, "Missing fields");
-		const { error } = contactUpdateSchema.validate(req.body);
-		if (error) throw HttpError(404, error.message);
 
 		const Id = req.params.contactId;
 		const updatedContact = await contactsService.updateContact(Id, req.body);
