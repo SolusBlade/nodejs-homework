@@ -22,6 +22,11 @@ router.delete("/:contactId", isValidId, removeContact);
 
 router.put("/:contactId", isValidId, validateBody(contactUpdateSchema), updateContact);
 
-router.put("/:contactId/favorite", isValidId, validateBody(contactUpdateFavoriteSchema), updateContact);
+router.patch(
+	"/:contactId/favorite",
+	isValidId,
+	validateBody(contactUpdateFavoriteSchema),
+	updateContact
+);
 
 module.exports = router;

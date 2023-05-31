@@ -3,14 +3,9 @@ const Joi = require("joi")
 const message = (field) => ({ "any.required": `Missing required ${field} field` });
 
 const contactAddSchema = Joi.object({
-	// name: Joi.string().required().messages(message("name")),
-	// email: Joi.string().required().messages(message("email")),
-	// phone: Joi.string().required().messages(message("phone")),
-	name: Joi.string()
-		.required()
-		.messages({ "any.required": `Set name for contact` }),
-	email: Joi.string(),
-	phone: Joi.string(),
+	name: Joi.string().required().messages(message("name")),
+	email: Joi.string().required().messages(message("email")),
+	phone: Joi.string().required().messages(message("phone")),
 	favorite: Joi.boolean(),
 });
 
